@@ -1,9 +1,9 @@
 // input argument
 let args = process.argv.slice(2);
 // variables for localStorage in the future
-let win = 0;
-let lose = 0;
-// colors
+let win = 0; //not in use yet
+let lose = 0; //not in use yet
+// colors not working yet
 const red = '\x1b[31m';
 const green = '\x1b[32m';
 const reset = '\x1b[0m';
@@ -15,21 +15,22 @@ console.log(`You chose: ${args}`);
 function random() {
   return Math.floor(Math.random() * 3);
 }
-// empty variable
+// empty variable used
 computer = "";
 // Translating to computer choice
 function computerChose() {
   switch (random()) {
-    case 1:
+    case 0:
       computer = "ROCK";
       break;
-    case 2:
+    case 1:
       computer = "PAPER";
       break;
-    case 3:
-      computer = "SCISSOR";
+    case 2:
+      computer = "SCISSORS";
       break;
     default:
+      computer = 'the computer cheated!'
       break;
   }
 }
@@ -45,15 +46,15 @@ function game(args, computer) {
   } else if (
     // if lose
     (args === "ROCK" && computer === "PAPER") ||
-    (args === "PAPER" && computer === "SCISSOR") ||
+    (args === "PAPER" && computer === "SCISSORS") ||
     (args === "SCISSOR" && computer === "ROCK")
   ) {
     const red = '\x1b[31m';
-    console.log("You lost this round")
+    console.log(`${red}You lost this round`)
     // printOutput('/t' + red + 'You lost this round' + reset);
   } else {
     // if win
-    console.log("Congratulation, you won this round!");
+    console.log(`${green}Congratulation, you won this round!`);
   }
 }
 // calling the function
